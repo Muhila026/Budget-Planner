@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "BudgetPlannerAppNew",
-    "slug": "BudgetPlannerAppNew",
+    "name": "Budget Planner",
+    "slug": "budget-planner-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
