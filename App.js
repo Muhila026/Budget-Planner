@@ -128,7 +128,7 @@ export default function App() {
         return (
           <View style={homeStyles.settingsSection}>
             <Text style={homeStyles.sectionTitle}>Settings</Text>
-            <View style={homeStyles.settingItem}>
+            {/* <View style={homeStyles.settingItem}>
               <Text style={homeStyles.settingLabel}>Budget Management</Text>
               <TouchableOpacity 
                 style={homeStyles.settingButton}
@@ -136,7 +136,7 @@ export default function App() {
               >
                 <Text style={homeStyles.settingButtonText}>Edit Budget</Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={homeStyles.settingItem}>
               <Text style={homeStyles.settingLabel}>Clear All Expenses</Text>
               <TouchableOpacity 
