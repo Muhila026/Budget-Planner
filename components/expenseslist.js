@@ -19,13 +19,13 @@ const ExpensesList = ({
           {showExpensesSection ? '▼' : '▶'}
         </Text>
       </TouchableOpacity>
-      
+           
       {showExpensesSection && (
         <ScrollView style={expensesListStyles.expensesList}>
           {expenses.length === 0 ? (
             <Text style={expensesListStyles.noExpenses}>No expenses yet</Text>
           ) : (
-            expenses.map((expense) => (
+            expenses.map((expense) =>(
               <View key={expense.id} style={expensesListStyles.expenseItem}>
                 <View style={expensesListStyles.expenseInfo}>
                   <Text style={expensesListStyles.expenseDescription}>{expense.description}</Text>

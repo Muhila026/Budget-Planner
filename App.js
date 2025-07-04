@@ -12,13 +12,14 @@ import FooterMenu from './components/menu';
 import Overview from './components/overview';
 import AddForm from './components/addform';
 import ExpensesList from './components/expenseslist';
+import Settings from './components/setting';
 import { homeStyles } from './style/homestyle';
 
 export default function App() {
   const [expenses, setExpenses] = useState([]);
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
-  const [budget, setBudget] = useState('1000');
+  const [budget, setBudget] = useState('10000');
   const [showBudgetInput, setShowBudgetInput] = useState(false);
   const [showFormSection, setShowFormSection] = useState(true);
   const [showExpensesSection, setShowExpensesSection] = useState(true);
@@ -69,36 +70,25 @@ export default function App() {
     switch (activeTab) {
       case 'overview':
         return (
-          <>
-            {/* Budget Overview */}
-            <Overview 
-              budget={budget}
-              setBudget={setBudget}
-              showBudgetInput={showBudgetInput}
-              setShowBudgetInput={setShowBudgetInput}
-              totalExpenses={totalExpenses}
-              remainingBudget={remainingBudget}
-            />
-
-            {/* Add Expense Form */}
-            <AddForm 
-              description={description}
-              setDescription={setDescription}
-              amount={amount}
-              setAmount={setAmount}
-              addExpense={addExpense}
-              showFormSection={showFormSection}
-              setShowFormSection={setShowFormSection}
-            />
-
-            {/* Expenses List */}
-            <ExpensesList 
-              expenses={expenses}
-              deleteExpense={deleteExpense}
-              showExpensesSection={showExpensesSection}
-              setShowExpensesSection={setShowExpensesSection}
-            />
-          </>
+          <Overview 
+            budget={budget}
+            setBudget={setBudget}
+            showBudgetInput={showBudgetInput}
+            setShowBudgetInput={setShowBudgetInput}
+            totalExpenses={totalExpenses}
+            remainingBudget={remainingBudget}
+            description={description}
+            setDescription={setDescription}
+            amount={amount}
+            setAmount={setAmount}
+            addExpense={addExpense}
+            expenses={expenses}
+            deleteExpense={deleteExpense}
+            showFormSection={showFormSection}
+            setShowFormSection={setShowFormSection}
+            showExpensesSection={showExpensesSection}
+            setShowExpensesSection={setShowExpensesSection}
+          />
         );
       
       case 'add':
@@ -109,8 +99,8 @@ export default function App() {
             amount={amount}
             setAmount={setAmount}
             addExpense={addExpense}
-            showFormSection={true}
-            setShowFormSection={() => {}}
+            showFormSection={showFormSection}
+            setShowFormSection={setShowFormSection}
           />
         );
       
@@ -119,44 +109,13 @@ export default function App() {
           <ExpensesList 
             expenses={expenses}
             deleteExpense={deleteExpense}
-            showExpensesSection={true}
-            setShowExpensesSection={() => {}}
+            showExpensesSection={showExpensesSection}
+            setShowExpensesSection={setShowExpensesSection}
           />
         );
       
       case 'settings':
-        return (
-          <View style={homeStyles.settingsSection}>
-            <Text style={homeStyles.sectionTitle}>Settings</Text>
-            {/* <View style={homeStyles.settingItem}>
-              <Text style={homeStyles.settingLabel}>Budget Management</Text>
-              <TouchableOpacity 
-                style={homeStyles.settingButton}
-                onPress={() => setShowBudgetInput(true)}
-              >
-                <Text style={homeStyles.settingButtonText}>Edit Budget</Text>
-              </TouchableOpacity>
-            </View> */}
-            <View style={homeStyles.settingItem}>
-              <Text style={homeStyles.settingLabel}>Clear All Expenses</Text>
-              <TouchableOpacity 
-                style={[homeStyles.settingButton, homeStyles.dangerButton]}
-                onPress={() => {
-                  Alert.alert(
-                    'Clear All Expenses',
-                    'Are you sure you want to delete all expenses?',
-                    [
-                      { text: 'Cancel', style: 'cancel' },
-                      { text: 'Clear', style: 'destructive', onPress: () => setExpenses([]) }
-                    ]
-                  );
-                }}
-              >
-                <Text style={homeStyles.settingButtonText}>Clear All</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        );
+        return <Settings setExpenses={setExpenses} budget={budget} setBudget={setBudget} />;
       
       default:
         return null;
