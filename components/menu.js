@@ -10,6 +10,7 @@ const FooterMenu = ({ activeTab, onTabPress }) => {
     { id: 'settings', label: 'Settings', icon: '⚙️' },
   ];
 
+  
   return (
     <View style={menuStyles.footer}>
       {menuItems.map((item) => (
